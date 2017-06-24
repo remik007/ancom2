@@ -1,0 +1,248 @@
+{% load staticfiles %}
+<html>
+<head>
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+	<link rel="stylesheet" href="{% static 'css/1.css' %}">
+
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/slider.css' %}">
+	<link rel="stylesheet" href="{% static 'css/list.css' %}">
+	<link rel="stylesheet" href="{% static 'css/cookies.css' %}">
+	<link rel="stylesheet" href="{% static 'css/webapp.css' %}">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<meta charset="UTF-8">
+<script type="text/javascript">
+	   $(document).ready(function(){
+            //-- Click on detail
+            $("ul.menu-items > li").on("click",function(){
+                $("ul.menu-items > li").removeClass("active");
+                $(this).addClass("active");
+            })
+
+            $(".attr,.attr2").on("click",function(){
+                var clase = $(this).attr("class");
+
+                $("." + clase).removeClass("active");
+                $(this).addClass("active");
+            })
+
+            //-- Click on QUANTITY
+            $(".btn-minus").on("click",function(){
+                var now = $(".section > div > input").val();
+                if ($.isNumeric(now)){
+                    if (parseInt(now) -1 > 0){ now--;}
+                    $(".section > div > input").val(now);
+                }else{
+                    $(".section > div > input").val("1");
+                }
+            })
+            $(".btn-plus").on("click",function(){
+                var now = $(".section > div > input").val();
+                if ($.isNumeric(now)){
+                    $(".section > div > input").val(parseInt(now)+1);
+                }else{
+                    $(".section > div > input").val("1");
+                }
+            })
+        })
+</script>
+<script type="text/javascript">
+	$().ready(function() {
+    var sName = "cookiesok";
+    $("#close-cookie-warn").click(function(){
+        var oExpire = new Date();
+        oExpire.setTime((new Date()).getTime() + 3600000*24*365);
+        document.cookie = sName + "=1;expires=" + oExpire;
+        $("#cookie-warn").hide("slow");
+    });
+
+    var sStr = '; '+ document.cookie +';';
+    var nIndex = sStr.indexOf('; '+ escape(sName) +'=');
+    if (nIndex === -1) {
+        $("#cookie-warn").show();
+    }
+});
+</script>
+	<script type="text/javascript">
+$(document).ready(function() {
+ 	$('#list').click(function(event){
+ 		event.preventDefault();
+ 		$('#products .item').addClass('list-group-item');
+	});
+	$('#grid').click(function(event){
+ 		event.preventDefault();
+ 		$('#products .item').removeClass('list-group-item');
+ 		$('#products .item').addClass('grid-group-item');
+ 	});
+ });
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+  $('.slider').slider();
+});
+
+		$(document).ready(function() {
+
+		  $(window).scroll(function () {
+
+			  console.log($(window).scrollTop())
+			if ($(window).scrollTop() > 150) {
+			  $('#nawigator').addClass('navbar-fixed-top');
+			  $('#nawigator').removeClass('nav-scrollable');
+			  $('.main-page').addClass('temp');
+
+			}
+			if ($(window).scrollTop() < 151) {
+			  $('#nawigator').addClass('nav-scrollable');
+			  $('#nawigator').removeClass('navbar-fixed-top');
+				$('.main-page').removeClass('temp');
+
+			}
+		  });
+		});
+	</script>
+
+	<title>Ancom</title>
+</head>
+<body>
+
+<section id="cookie-warn">
+    <p><strong>UWAGA!</strong> Niniejsza strona wykorzystuje pliki cookies.
+    Informacje uzyskane za pomocą cookies wykorzystywane są głównie
+    w celach statystycznych. Pozostając na stronie godzisz się na
+    ich zapisywanie w Twojej przeglądarce.
+    <a href="javascript:void(0);" id="close-cookie-warn"
+    >Zamknij ostrzeżenie</a></p>
+</section>
+
+<div id="top-banner" style="height: 150px;">
+	<img src="../../static/logos/adres.png" alt="Ancom" style="height: 55%; margin-left: 13%; margin-top: 3%; "></img>
+</div>
+
+
+<div id="nawigator">
+<nav  class="navbar navbar-default" >
+  <div  class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header" style="padding-left:3%; padding-right:5%;">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'main_page' %}">ANCOM</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav" style="">
+      <li><a href="{% url 'main_page' %}" ><i class="glyphicon glyphicon-home"></i></a></li>
+		<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PRODUKTY<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+			  {% for category in categories %}
+				<li><a href="{% url 'get_product' category.name %}" >{{category.name}}</a></li>
+		  		<li role="separator" class="divider"></li>
+			  {% endfor %}
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">USŁUGI<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'uslugi' %}"  >Usługi informatyczne</a></li>
+			  <li role="separator" class="divider"></li>
+			  <li><a href="{% url 'szkoly' %}"  >Obsługa szkół</a></li>
+			  <li role="separator" class="divider"></li>
+			<li><a href="{% url 'firmy' %}"  >Obsługa firm</a></li>
+            <li role="separator" class="divider"></li>
+          </ul>
+        </li>
+		<li><a href="{% url 'kontakt' %}"  >KONTAKT</a></li>
+	  </ul>
+
+		<form class="navbar-form navbar-right" method="get" action="/szukaj/" style="padding-right:3%; padding-left:5%;">
+        <div class="form-group">
+
+            <input type="text" class="form-control" placeholder="Szukaj" name="q">
+			<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+        </div>
+
+      </form>
+
+
+    </div><!-- /.navbar-collapse -->
+
+  </div><!-- /.container-fluid -->
+</nav>
+</div>
+
+<div class="content container">
+	<div class="row">
+		<div class="main-page">
+
+			{% block content %}
+			{% endblock %}
+		</div>
+	</div>
+</div>
+<br><br>
+
+<footer class="footer">
+
+      <div class="container">
+
+		<div id="logo">
+			<a href="{% url 'main_page' %}" class="footer-logo">Moja firma</a>
+		</div>
+
+		<div id="helpfullinks" class="social">
+			<div>
+				<p class="category">Produkty</p>
+				<ul>
+				  {% for category in categories %}
+					<li><a href="{% url 'get_product' category.name %}" >{{category.name}}</a></li>
+				  {% endfor %}
+          		</ul>
+				</ul>
+			</div>
+			<div>
+				<p class="category">Usługi</p>
+				<ul>
+					 <li><a href="{% url 'uslugi' %}"  >Usługi informatyczne</a></li>
+			  		<li><a href="{% url 'szkoly' %}"  >Obsługa szkół</a></li>
+					<li><a href="{% url 'firmy' %}"  >Obsługa firm</a></li>
+				</ul>
+			</div>
+			<div>
+				<p class="category">O nas</p>
+				<ul>
+					<li><a href="{% url 'kontakt' %}"  >Kontakt</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div id="social">
+
+			<div class="clear"></div>
+			<ul class="contact">
+				<li class="last">&copy;2017 ANCOM</li>
+			</ul>
+		</div>
+
+	</div>
+</div>
+
+</footer>
+
+
+</body>
+</html>

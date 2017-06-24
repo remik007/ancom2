@@ -1,0 +1,197 @@
+#top-banner{
+background-image: url('../logos/banner-image.jpg');
+ background-color: rgba(0, 0, 0, 0);
+ background-position: center center;
+ background-size: cover;
+}
+
+.index-content {
+    text-align: justify;
+    text-justify: inter-word;
+}
+footer {
+
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+.nav-scrollable{
+
+    position: relative;
+}
+
+.temp{
+    padding-top: 0px;
+}
+
+footer .clear {
+  text-align: left;
+  clear: both;
+  float: none;
+  
+}
+footer {
+  background: white;
+  overflow: hidden;
+  border-top: solid 1px #000;
+  padding: 58px 0 0;
+  font-family: arial,helvetica,sans-serif;
+  line-height: 1.5em;
+}
+footer p,
+footer ul,
+footer a,
+footer .btn {
+  font-family: arial,helvetica,sans-serif;
+  line-height: 1.5em;
+  text-transform: none;
+}
+footer li {
+  font-size: .875em;
+  line-height: 1.5em;
+}
+
+footer .content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+@media screen and (max-width: 768px) {
+	footer .content {
+		padding: 0 10px;
+	}
+}
+footer .last {
+  margin-right: 0px !important;
+}
+@media only screen and (max-width: 485px) {
+	footer .last {
+		clear: both;
+	}
+}
+#emailsignup {
+  float: left;
+  width: 330px;
+}
+
+
+
+
+
+
+#logo .footer-logo {
+  display: flex;
+  float:left;
+  width: 200px;
+  height: 200px;
+  background: url("../logos/logo.png") top left no-repeat;
+  background-size: contain;
+  text-indent: -9999px;
+  margin-bottom: 30px;
+  margin-left: 5%;
+}
+
+
+
+
+
+
+#helpfullinks a, #social a {
+  color: rgba(0,0,0,0.7);
+  text-decoration: none;
+}
+
+#helpfullinks {
+  float: right;
+}
+@media only screen and (max-width: 825px) {
+	#helpfullinks {
+
+		display: inline-block;
+
+	}
+
+	#logo {
+        display: inline-block;
+
+	}
+}
+#helpfullinks div {
+  float: left;
+  margin-right: 45px;
+}
+#helpfullinks div a {
+	display: inline;
+  margin-top: -6px;
+  margin-bottom: 8px;
+}
+#helpfullinks p.category {
+  color: #222;
+  font-size: 21px;
+  margin: 0 0 14px;
+}
+#helpfullinks p.category a {
+  color: #222;
+}
+#helpfullinks ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 14px 0 0 0;
+}
+#helpfullinks li {
+  padding: 0px;
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+
+
+
+#social {
+  margin: 60px auto;
+  overflow: hidden;
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+	#social {
+		margin: 26px auto;
+	}
+}
+#social ul {
+  margin: 0px auto;
+  list-style-type: none;
+  padding: 0px;
+}
+#social ul.social, #social ul.contact {
+  display: inline-block;
+}
+#social li {
+  margin: 0 17px 0 0;
+  float: left;
+  color: rgba(0,0,0,0.7);
+}
+
+#social li a {
+  color: rgba(0,0,0,0.7);
+}
+
+#footerSealiFrame {
+  border: medium none;
+  height: 175px;
+  margin: 0 auto;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+@media only screen and (max-width: 600px) {
+	#footerSealiFrame {
+		height: 285px;
+	}
+	#footerSeals > img, #footerSeals > embed, #footerSeals > object, #footerSeals > a {
+    display: inline-block !important;
+    margin: 0 6px 10px !important;
+    vertical-align: middle !important;
+	}
+}

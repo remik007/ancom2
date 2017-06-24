@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <body>
+        <div class="container">
+        	<div class="row">
+               <div class="col-xs-4 item-photo">
+                    <img style="max-width:100%;" src="{{ product.image.url }}" />
+                </div>
+                <div class="col-xs-5" style="border:0px solid gray">
+                    <!-- Datos del vendedor y titulo del producto -->
+                    <h5 style="color:#337ab7"><a href="{% url 'get_product' product.category.name %}">{{ product.category }}</a></h5>
+                    <h3>{{ product.company }}, {{ product.name }}</h3>
+                    <div class="section" style="padding-bottom:5px;">
+                        <h6 class="title-attr"><small></small></h6>
+                        <div>
+                            <div class="attr2">Typ: {{ product.type.name }}</div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Precios -->
+                    <h6 class="title-price">Cena</h6>
+                    <h3 style="margin-top:0px;">{{ product.price }} zł</h3>
+
+
+
+                </div>
+
+                <div class="col-xs-9">
+
+                    <div style="width:100%;border-top:1px solid silver">
+                        <p style="padding-top:15px;padding-bottom:15px;">
+                            <small>
+                            {{ product.short_description }}
+                            </small>
+                        </p>
+                        <small>
+                            {{ product.full_description }}
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+    <br>
+
+    <h3>ANCOM</h3>
+    <h4>Kompleksowe usługi informatyczne</h4>
+    <br>
+    <h4>Jesteśmy z Wami od 1995 roku. Postaw na doświadczenie!</h4>
+<br>
+
+
+<div class="frame">
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+      {% for slider in sliders %}
+
+          {%if slider.first == True %}
+                <div class="item active">
+           {% else %}
+                 <div class="item">
+           {% endif %}
+                  <img src='{{ slider.image_thumbnail.url }}'  alt='{{slider.title}}' style="width: 100%"/>
+                 <div class="carousel-caption">
+                    <h3>{{slider.title}}</h3>
+                    <p>{{slider.description}}</p>
+                  </div>
+                </div>
+      {% endfor %}
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Poprzedni</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Następny</span>
+  </a>
+</div>
+
+</div>
+</center>
+
+{% endblock content %}

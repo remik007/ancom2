@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+<center>
+
+<h3>Oferta dla firm:</h3>
+    <br>
+    <div class="index-content">
+<ul>
+        {% for company_service in it_services %}
+        <li><p>{{company_service.description}}</p></li>
+        {% endfor %}
+</ul>
+</div>
+</center>
+
+
+{% endblock %}
